@@ -6,20 +6,23 @@ public class Human extends Player{
 
 
 
-    public Human(String name) {
-        super(name);
-        this.rename();
+    public Human() {
+        super();
+
+        System.out.print("Set player name: ");
+        Scanner scannerName = new Scanner(System.in);
+        String name = scannerName.next();
+
+        this.setName(name);
     }
+
+
+
     public Human(Human human){
         super(human);
     }
-    @Override
-    public void rename(){
-        System.out.print("Set player name: ");
-        Scanner scannerName = new Scanner(System.in);
-        String new_name = scannerName.next();
-        this.setName(new_name);
-    }
+
+
     @Override
     public void printClass(){
         System.out.println("human");

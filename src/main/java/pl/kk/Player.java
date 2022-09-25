@@ -6,6 +6,8 @@ public class Player {
     private Vector<Card> playerDeck = new Vector<Card>();
     private String name;
 
+
+    public  Player(){}
     public Player(String name) {
         this.name = name;
     }
@@ -28,8 +30,7 @@ public class Player {
         for (Card i : playerDeck)
         {i.printCard();}
     }
-    public void rename(){
-    };
+
     public void setName(String name){
         this.name = name;
     }
@@ -39,6 +40,7 @@ public class Player {
     public void getCard(Card card){
         this.playerDeck.add(card);
     }
+
 
     public void printClass(){
         System.out.println("player");

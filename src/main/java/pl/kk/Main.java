@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int humans, bots;
+        int humansNum, botsNum;
         System.out.println("Number of human Players: ");
-        humans = scanner.nextInt();
+        humansNum = scanner.nextInt();
         System.out.println("Number of Bots: ");
-        bots = scanner.nextInt();
+        botsNum = scanner.nextInt();
 
-        Cassino orginal = new Cassino(humans,bots);
+        Cassino orginal = new Cassino(humansNum,botsNum);
         orginal.printCassinoPlayers();
 
         int decision = 0;
@@ -25,8 +25,6 @@ public class Main {
             temp.Playing();
             temp.printCassinoPlayers();
         }
-
-//        orginal.printCassinoPlayers();
 
     }
 }

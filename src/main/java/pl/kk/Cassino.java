@@ -4,15 +4,17 @@ import java.util.Collections;
 import java.util.Vector;
 
 public class Cassino {
-    private Vector <Player> players = new Vector<Player>();
-    private Vector <Card> deck = new Vector <Card>();
+    private Vector <Player> players;
+    private Vector <Card> deck;
 
-    public Cassino(int h , int b){
+    public Cassino(int humans , int bots){
         this.deck = Card.InitializeDeck();
-        this.createPlayers(h,b);
+        this.players = createPlayers(humans, bots);
         this.deckShuffle();
     }
     public Cassino(Cassino orginal){
+        this.players = new Vector<Player>();
+        this.deck = new Vector<Card>();
         for(Player i : orginal.players)
         {
             if((i) instanceof Human)
@@ -70,12 +72,16 @@ public class Cassino {
             j++;
         }
     }
-    public void createPlayers(int humans, int bots){
-        for( int i=0; i < humans; i++)
-        {this.players.add(new Human("human"));}
+    public Vector<Player> createPlayers(int humans, int bots){
+        Vector<Player> playerList = new Vector<>();
+        for( int i=0; i < humans; i++) {
+            playerList.add(new Human());
+        }
         for (int i = 0; i <bots; i++)
-        {this.players.add(new Bot("bot"));}
-
+        {
+            playerList.add(new Bot());
+        }
+        return  playerList;
     }
     public void deckShuffle(){
         Collections.shuffle(deck);
@@ -83,5 +89,9 @@ public class Cassino {
     public void printCassinoPlayers(){
         for (Player i : players)
         {i.printPlayer();}
+    }
+
+    public Vector<Player> getPlayers() {
+        return players;
     }
 }
