@@ -15,7 +15,8 @@ public class Bot extends Player{
     public void printClass(){
         System.out.println("bot");
     }
-    @Override
+
+
     public int Play(){
         if(this.calculatePoints() < 17)
             return 1;

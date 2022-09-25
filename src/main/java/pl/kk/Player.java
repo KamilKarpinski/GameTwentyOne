@@ -2,7 +2,7 @@ package pl.kk;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
     private ArrayList<Card> playerDeck = new ArrayList<Card>();
     private String name;
 
@@ -54,7 +54,13 @@ public class Player {
         }
         return sum;
     }
-    public int Play(){
-        return 2;
+    public abstract int Play();
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerDeck=" + playerDeck +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

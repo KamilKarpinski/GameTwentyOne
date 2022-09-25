@@ -10,8 +10,8 @@ public class Main {
         System.out.println("Number of Bots: ");
         botsNum = scanner.nextInt();
 
-        Cassino orginal = new Cassino(humansNum,botsNum);
-        orginal.printCassinoPlayers();
+        Cassino originalCassino = new Cassino(humansNum,botsNum);
+        originalCassino.printCassinoPlayers();
 
         int decision = 0;
         while(true) {
@@ -20,10 +20,10 @@ public class Main {
 
             if (decision!=1) break;
 
-            Cassino temp = new Cassino(orginal);
+            Cassino tempCassino = new Cassino(originalCassino);
 
-            temp.Playing();
-            temp.printCassinoPlayers();
+            GameLogic.Playing(tempCassino);
+            tempCassino.printCassinoPlayers();
         }
 
     }
