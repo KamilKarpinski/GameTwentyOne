@@ -6,7 +6,14 @@ import java.util.List;
 
 public class Cassino {
     private ArrayList<Player> players;
+
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
     private ArrayList <Card> deck;
+
+    private Croupier croupier = new Croupier();
 
     public Cassino(int humans , int bots){
         this.deck = Card.InitializeDeck();
@@ -26,52 +33,22 @@ public class Cassino {
         {this.deck.add(new Card(i));}
     }
 
-    //    public pl.kk.Player returnPlayer(int x){
-//        return players.get(x);
-//    }
-    public void giveCardToPlayer(int index){
-        players.get(index).getCard(this.giveCard());
-    }
-    public void giveCardsToAllPlayers(int quantity){
-        for (int j =0; j<quantity; j++) {
-            for (Player i : players) {
-                i.getCard(this.giveCard());
-            }
-        }
-    }
-    public void deleteTopDeckCard(){
-        deck.remove(deck.size()-1);
-    }
-    public Card giveCard(){
-        Card temp = new Card(deck.get(deck.size()-1)); //copying constructor called
-        this.deleteTopDeckCard();
-        return temp;
-    }
-
     public void Playing(){
-        ArrayList <Integer> decisionVector = new ArrayList<Integer>();
-        this.giveCardsToAllPlayers(2);
         this.deckShuffle();
+        ArrayList <Integer> decisionVector = new ArrayList<Integer>();
+        croupier.giveCardsToAllPlayers(2, this);
+//        this.deckShuffle();
         for (Player i :players){decisionVector.add(0);}
         while (decisionVector.stream().reduce(0, Integer::sum) < players.size()*2){
             for( int i = 0; i < players.size(); i++){
                 if(decisionVector.get(i) != 2)
                     decisionVector.set(i,players.get(i).Play());
                 if(decisionVector.get(i) == 1){
-                    this.giveCardToPlayer(i);
+                    croupier.giveCardToPlayer(i, this);
                 }
             }
         }
 
-    }
-
-    public void printCassinoDeck(){
-        int j = 1;
-        for (Card i : deck){
-            System.out.print(j +". ");
-            i.printCard();
-            j++;
-        }
     }
     public ArrayList<Player> createPlayers(int humans, int bots){
         ArrayList<Player> playerList = new ArrayList<>();

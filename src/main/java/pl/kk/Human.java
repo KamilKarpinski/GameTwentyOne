@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Human extends Player{
 
-
-
     public Human() {
         super();
         System.out.print("Set player name: ");
@@ -13,14 +11,9 @@ public class Human extends Player{
         String name = scannerName.next();
         this.setName(name);
     }
-
-
-
     public Human(Human human){
         super(human);
     }
-
-
     @Override
     public void printClass(){
         System.out.println("human");
