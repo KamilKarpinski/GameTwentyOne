@@ -1,11 +1,12 @@
 package pl.kk;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Vector;
+import java.util.List;
 
 public class Cassino {
-    private Vector <Player> players;
-    private Vector <Card> deck;
+    private ArrayList<Player> players;
+    private ArrayList <Card> deck;
 
     public Cassino(int humans , int bots){
         this.deck = Card.InitializeDeck();
@@ -13,8 +14,8 @@ public class Cassino {
         this.deckShuffle();
     }
     public Cassino(Cassino orginal){
-        this.players = new Vector<Player>();
-        this.deck = new Vector<Card>();
+        this.players = new ArrayList<Player>();
+        this.deck = new ArrayList<Card>();
         for(Player i : orginal.players)
         {
             if((i) instanceof Human)
@@ -48,7 +49,7 @@ public class Cassino {
     }
 
     public void Playing(){
-        Vector <Integer> decisionVector = new Vector<Integer>();
+        ArrayList <Integer> decisionVector = new ArrayList<Integer>();
         this.giveCardsToAllPlayers(2);
         this.deckShuffle();
         for (Player i :players){decisionVector.add(0);}
@@ -72,8 +73,8 @@ public class Cassino {
             j++;
         }
     }
-    public Vector<Player> createPlayers(int humans, int bots){
-        Vector<Player> playerList = new Vector<>();
+    public ArrayList<Player> createPlayers(int humans, int bots){
+        ArrayList<Player> playerList = new ArrayList<>();
         for( int i=0; i < humans; i++) {
             playerList.add(new Human());
         }
@@ -91,7 +92,7 @@ public class Cassino {
         {i.printPlayer();}
     }
 
-    public Vector<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 }

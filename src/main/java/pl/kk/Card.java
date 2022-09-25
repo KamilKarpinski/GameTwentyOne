@@ -1,6 +1,6 @@
 package pl.kk;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Card {
     private final String symbol;
@@ -28,8 +28,8 @@ public class Card {
     public void printCard(){
         System.out.println(getSymbol() + " "+getUnit());
     }
-    public static Vector<Card> InitializeDeck(){
-        Vector<Card> newDeck = new Vector<Card>();
+    public static ArrayList<Card> InitializeDeck(){
+        ArrayList<Card> newDeck = new ArrayList<>();
         String [] symbols = {"2", "3", "4","5","6","7","8","9","10","J","Q","K","A"};
         char [] units = {'♥', '♦', '♣', '♠'};
         for (String i : symbols){

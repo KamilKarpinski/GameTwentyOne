@@ -1,9 +1,9 @@
 package pl.kk;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Player {
-    private Vector<Card> playerDeck = new Vector<Card>();
+    private ArrayList<Card> playerDeck = new ArrayList<Card>();
     private String name;
 
 
@@ -17,7 +17,7 @@ public class Player {
         }
         this.name = pl.name;
     }
-    public Vector<Card> getPlayerDeck(){
+    public ArrayList<Card> getPlayerDeck(){
         return playerDeck;
     }
     public void printPlayer(){

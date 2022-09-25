@@ -8,11 +8,9 @@ public class Human extends Player{
 
     public Human() {
         super();
-
         System.out.print("Set player name: ");
         Scanner scannerName = new Scanner(System.in);
         String name = scannerName.next();
-
         this.setName(name);
     }
 
