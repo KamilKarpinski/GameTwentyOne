@@ -1,6 +1,7 @@
 package pl.kk;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Card {
     private final String symbol;
@@ -11,12 +12,12 @@ public class Card {
         this.symbol = symbol;
         this.unit = unit;
 
-        switch(symbol) {
-            case "A": this.value = 11; break;
-            case "K": this.value = 4; break;
-            case "Q": this.value = 3; break;
-            case "J": this.value = 2; break;
-            default: this.value = Integer.parseInt(symbol);
+        switch (symbol) {
+            case "A" -> this.value = 11;
+            case "K" -> this.value = 4;
+            case "Q" -> this.value = 3;
+            case "J" -> this.value = 2;
+            default -> this.value = Integer.parseInt(symbol);
         }
     }
 
@@ -25,18 +26,15 @@ public class Card {
         this.unit = old.getUnit();
         this.value = old.getValue();
     }
-    public void printCard(){
-        System.out.println(getSymbol() + " "+getUnit());
-    }
     public static ArrayList<Card> InitializeDeck(){
         ArrayList<Card> newDeck = new ArrayList<>();
-        String [] symbols = {"2", "3", "4","5","6","7","8","9","10","J","Q","K","A"};
-        char [] units = {'♥', '♦', '♣', '♠'};
-        for (String i : symbols){
-            for (char j : units){
-                newDeck.add(new Card(i, j));
-            }
-        }
+        ArrayList<String> symbols = new ArrayList<>(Arrays.asList("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"));
+        ArrayList<Character> units = new ArrayList<>(Arrays.asList('♥', '♦', '♣', '♠'));
+
+        symbols.stream()
+                .forEach(symbol -> {units.stream()
+                        .forEach(unit -> newDeck.add(new Card(symbol, unit)));});
+
         return newDeck;
     }
 
@@ -51,6 +49,12 @@ public class Card {
 
     public char getUnit() {
         return unit;
+    }
+
+    @Override
+    public String toString() {
+        return   symbol + ' ' +
+                unit;
     }
 }
 

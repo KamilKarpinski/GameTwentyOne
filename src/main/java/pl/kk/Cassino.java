@@ -43,8 +43,7 @@ public class Cassino {
         return  playerList;
     }
     public void printCassinoPlayers(){
-        for (Player i : players)
-        {i.printPlayer();}
+        players.stream().forEach(System.out::println);
     }
 
     public List<Player> getPlayers() {

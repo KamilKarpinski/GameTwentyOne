@@ -21,7 +21,7 @@ public class Human extends Player{
     @Override
     public int Play(){
         Scanner scannerName = new Scanner(System.in);
-        this.printPlayer();
+        System.out.println(this);
         System.out.println("1 - Draw pl.kk.Card \n2 - STOP \n Decision: ");
         int decision = scannerName.nextInt();
         switch(decision) {

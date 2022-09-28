@@ -1,8 +1,11 @@
 package pl.kk;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ScoreComparator scoreComparator = new ScoreComparator();
         Scanner scanner = new Scanner(System.in);
         int humansNum, botsNum;
         System.out.println("Number of human Players: ");
@@ -23,7 +26,11 @@ public class Main {
             Cassino tempCassino = new Cassino(originalCassino);
 
             GameLogic.Playing(tempCassino);
-            tempCassino.printCassinoPlayers();
+
+            List<Player> scoreBoard = tempCassino.getPlayers().stream()
+                    .sorted(scoreComparator).toList();
+
+            scoreBoard.stream().forEach(System.out::println);
         }
 
     }

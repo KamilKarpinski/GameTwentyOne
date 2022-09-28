@@ -3,7 +3,7 @@ package pl.kk;
 import java.util.ArrayList;
 
 public abstract class Player {
-    private ArrayList<Card> playerDeck = new ArrayList<Card>();
+    private ArrayList<Card> playerDeck = new ArrayList<>();
     private String name;
 
 
@@ -11,11 +11,10 @@ public abstract class Player {
     public Player(String name) {
         this.name = name;
     }
-    public Player(Player pl) {
-        for (Card i : pl.playerDeck){
-            this.playerDeck.add(new Card(i));
-        }
-        this.name = pl.name;
+    public Player(Player player) {
+        player.getPlayerDeck().stream()
+                .forEach( card -> this.playerDeck.add(new Card(card)));
+        this.name = player.name;
     }
     public ArrayList<Card> getPlayerDeck(){
         return playerDeck;
@@ -27,8 +26,8 @@ public abstract class Player {
         System.out.println("points: "+this.calculatePoints());
     }
     public void printPlayerDeck(){
-        for (Card i : playerDeck)
-        {i.printCard();}
+        playerDeck.stream()
+                .forEach(System.out::println);
     }
 
     public void setName(String name){
@@ -58,9 +57,10 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "playerDeck=" + playerDeck +
-                ", name='" + name + '\'' +
-                '}';
+        String newString =
+                "name = " + name +
+                        "\nplayerDeck = " + playerDeck.stream().map(i -> i.toString()).toList()
+                                +"\npoints = "+this.calculatePoints()+"\n";
+        return newString;
     }
 }
